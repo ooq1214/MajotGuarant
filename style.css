@@ -1,0 +1,251 @@
+:root {
+    --bg-dark: #0f1115;
+    --accent: #3b82f6; /* Modern Blue */
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Мягкое фоновое свечение */
+.background-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Фото профиля */
+.avatar-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 20px;
+}
+
+.main-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px; /* Квадрат со скруглением — современный тренд */
+    border: 2px solid var(--border);
+}
+
+.status-dot {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 18px;
+    height: 18px;
+    background: #10b981;
+    border: 3px solid var(--bg-dark);
+    border-radius: 50%;
+}
+
+.name {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.badge-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.badge {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.major { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+.role { background: rgba(255, 255, 255, 0.1); color: var(--text-dim); }
+
+.bio-text {
+    color: var(--text-dim);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+/* Кнопки */
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.link-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.link-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.primary-btn {
+    background: var(--text-main);
+    color: var(--bg-dark);
+    justify-content: center;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.primary-btn:hover {
+    background: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Анимации JS */
+.fade-up {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+
+
+
+
+
+
+
+/* 1. Исправляем скролл в body */
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Убираем overflow: hidden; и заменяем на нормальный скролл */
+    overflow-y: auto; 
+    overflow-x: hidden;
+    padding: 40px 0; /* Чтобы карточка не прилипала к краям при скролле */
+}
+
+/* 2. Делаем текст ника "ОБЪЕМНЫМ" и красивым */
+.name {
+    font-size: 32px; /* Чуть увеличил */
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 10px rgba(59, 130, 246, 0.3));
+}
+
+/* 3. Добавляем "мигание" и блеск на кнопки (эффект глянца) */
+.link-item {
+    position: relative;
+    overflow: hidden; /* Чтобы блик не вылетал за края */
+    /* ... остальные твои стили из прошлого кода ... */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Анимация блика, которая проходит по кнопке */
+.link-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.link-item:hover::after {
+    left: 100%;
+    transition: 0.5s;
+}
+
+/* 4. Оживляем карточку (пусть она плавно дышит) */
+.glass-card {
+    animation: floating 6s ease-in-out infinite;
+    /* ... остальные твои стили ... */
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
